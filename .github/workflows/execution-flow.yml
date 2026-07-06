@@ -64,10 +64,10 @@ jobs:
           name: dist-files
           path: dist
   deploy:
-    needs: [build,lint]
+    needs: build
     uses: ./.github/workflows/reusable.yml
   report:
-    needs: [deploy,lint]
+    needs: [lint,deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Output Informations
