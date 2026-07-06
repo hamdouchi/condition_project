@@ -66,3 +66,11 @@ jobs:
   deploy:
     needs: [build,lint]
     uses: ./.github/workflows/reusable.yml
+  report:
+    needs: [deploy,lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Informations
+        run: |
+          echo "Something went wrong, please check the logs."
+          echo ${{ toJson(github)}}
